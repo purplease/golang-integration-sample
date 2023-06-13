@@ -26,5 +26,19 @@
     "created": "2023-06-06T19:23:05.728Z",
     "sortNum": 40000,
     "folders": []
+  },
+  {
+    "_id": "73e6c50d-0973-42bf-8ba0-3031502da98a",
+    "colName": "OTP",
+    "created": "2023-06-13T21:55:54.907Z",
+    "sortNum": 50000,
+    "folders": []
+  },
+  {
+    "_id": "8c8ebc2b-facb-4462-9b7f-4a18952b9d85",
+    "colName": "Messages",
+    "created": "2023-06-13T22:12:58.030Z",
+    "sortNum": 60000,
+    "folders": []
   }
 ]

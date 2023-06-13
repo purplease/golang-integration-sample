@@ -2,8 +2,12 @@ package config
 
 // Config holds the application configuration
 type Config struct {
-	TwilioAccountSID   string
-	TwilioAuthToken    string
-	OutreachAPIKey     string
-	OutreachAPIBaseURL string
+	AccountSID          string
+	AuthToken           string
+	VerifyServiceSID    string
+	WhatsappPhoneNumber string
+	SMSPhoneNumber      string
+	PhoneNumberSID      string
+	OutreachAPIKey      string
+	OutreachAPIBaseURL  string
 }

@@ -41,6 +41,26 @@ type AppConfig struct {
 		// Enabled is the feature flag
 		Enabled bool `env:"HTTPS_ENABLED"`
 	}
+
+	TwilioConfig struct {
+		// Enabled is the feature flag
+		Enabled bool `env:"TWILIO_ENABLED"`
+
+		// AccountSID is the twilio account SID value
+		AccountSID string `env:"TWILIO_ACCOUNT_SID"`
+
+		// AuthToken is the twilio auth token value
+		AuthToken string `env:"TWILIO_AUTH_TOKEN"`
+
+		// VerifyServiceSID is the twilio verification Service SID value
+		VerifyServiceSID string `env:"TWILIO_VERIFY_SERVICE_SID"`
+
+		WhatsappPhoneNumber string `env:"TWILIO_WHATSAPP_PHONE_NUMBER"`
+
+		SMSPhoneNumber string `env:"TWILIO_SMS_PHONE_NUMBER"`
+
+		PhoneNumberSID string `env:"TWILIO_PHONE_NUMBER_SID"`
+	}
 }
 
 // NewConfig loads <APP_ENV> into Config struct.

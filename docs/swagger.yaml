@@ -153,6 +153,34 @@ definitions:
       total:
         type: integer
     type: object
+  message.MessageResponse:
+    properties:
+      message:
+        type: string
+    type: object
+  message.NewMessageRequest:
+    properties:
+      body:
+        example: Something
+        type: string
+      phone_number:
+        example: "+919901170563"
+        type: string
+    required:
+    - body
+    - phone_number
+    type: object
+  message.Response:
+    properties:
+      body:
+        example: Sent Successfully
+        type: string
+      created_at:
+        type: string
+      status:
+        example: ok
+        type: string
+    type: object
   order.MessageResponse:
     properties:
       message:
@@ -174,18 +202,58 @@ definitions:
     - menu_id
     - quantity
     type: object
+  verify.NewCreateOTPRequest:
+    properties:
+      channel:
+        example: sms, whatsapp, call, email
+        type: string
+      to:
+        example: +919901170563, rajesh.biswas@purplease.com
+        type: string
+    required:
+    - channel
+    - to
+    type: object
+  verify.NewValidateOTPRequest:
+    properties:
+      code:
+        example: "123456"
+        type: string
+      to:
+        example: +919901170563, rajesh.biswas@purplease.com
+        type: string
+    required:
+    - code
+    - to
+    type: object
+  verify.Response:
+    properties:
+      body:
+        example: Sent Successfully
+        type: string
+      created_at:
+        type: string
+      status:
+        example: ok
+        type: string
+    type: object
+  verify.VerifyResponse:
+    properties:
+      verify:
+        type: string
+    type: object
 host: localhost:8080
 info:
   contact:
-    email: biswas.rajesh63@gmail.com
+    email: rajesh.biswas@purplease.com
     name: Rajesh Kumar Biswas
-    url: http://github.com/Raj63
-  description: Documentation's Golang REST APIs
+    url: https://github.com/purplease-rajesh
+  description: Documentation's Golang Integration Sample
   license:
     name: Apache 2.0
     url: http://www.apache.org/licenses/LICENSE-2.0.html
   termsOfService: http://swagger.io/terms/
-  title: Golang REST APIs
+  title: Golang Integration Sample
   version: "2.0"
 paths:
   /diners:
@@ -435,6 +503,66 @@ paths:
       summary: Get top menus by count
       tags:
       - menus
+  /messages/sms:
+    post:
+      consumes:
+      - application/json
+      description: Create new SMS message on the external system like TWILIO
+      parameters:
+      - description: body data
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/message.NewMessageRequest'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/message.Response'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/message.MessageResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/message.MessageResponse'
+      summary: Create New SMS Message
+      tags:
+      - messages
+  /messages/whatsapp:
+    post:
+      consumes:
+      - application/json
+      description: Create new Whatsapp message on the external system like TWILIO
+      parameters:
+      - description: body data
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/message.NewMessageRequest'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/message.Response'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/message.MessageResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/message.MessageResponse'
+      summary: Create New Whatsapp Message
+      tags:
+      - messages
   /orders:
     post:
       consumes:
@@ -517,4 +645,64 @@ paths:
       summary: Delete orders by ID
       tags:
       - orders
+  /otp/create:
+    post:
+      consumes:
+      - application/json
+      description: Create new SMS/whatsapp verify OTP from external system like Twilio
+      parameters:
+      - description: body data
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/verify.NewCreateOTPRequest'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/verify.Response'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/verify.VerifyResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/verify.VerifyResponse'
+      summary: Create New SMS/whatsapp Verify OTP
+      tags:
+      - verifys
+  /otp/validate:
+    post:
+      consumes:
+      - application/json
+      description: Validate a SMS/whatsapp OTP from external system like Twilio
+      parameters:
+      - description: body data
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/verify.NewValidateOTPRequest'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/verify.Response'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/verify.VerifyResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/verify.VerifyResponse'
+      summary: Validates a SMS/whatsapp OTP
+      tags:
+      - verifys
 swagger: "2.0"

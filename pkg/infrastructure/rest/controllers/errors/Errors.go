@@ -40,6 +40,8 @@ func Handler(c *gin.Context) {
 				c.JSON(http.StatusInternalServerError, MessagesResponse{Message: "We are working to improve the flow of this request."})
 				return
 			}
+		} else {
+			c.JSON(http.StatusInternalServerError, MessagesResponse{Message: "We are working to improve the flow of this request."})
 		}
 
 		return

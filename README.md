@@ -1,6 +1,6 @@
 # golang-integration-sample
 
-A sample production grade REST API application written in Golang with minimal business functionalities but should have all non-functional areas covered up.
+A sample production grade REST API application written in Golang with simple twilio integrations and other functionalities but have all non-functional areas covered up.
 
 - Microservices
 - Docker Containers
@@ -53,17 +53,23 @@ A sample production grade REST API application written in Golang with minimal bu
 - The terminal shell looks like this
 ![alt](assets/screenshots/run-cli.png)
 
+- The Swagger OpenAPI docs will be generated dynamically for the APIS like this
+![alt](assets/screenshots/swag-gen.png)
+
 - The swagger documentation UI will be available at `http://localhost:8080/swagger/index.html`
 ![alt](assets/screenshots/swagger-ui.png)
 
 - The PProf will be avilable at `http://localhost:8080/debug/pprof`
 ![alt](assets/screenshots/pprof.png)
 
-- The Inspector UI will be available at `hhttp://localhost:8080/_inspector`
+- The Inspector UI will be available at `http://localhost:8080/_inspector`
 ![alt](assets/screenshots/inspector.png)
 
-- The metrics api will be available at `hhttp://localhost:8080/metrics`
+- The metrics api will be available at `http://localhost:8080/metrics`
 ![alt](assets/screenshots/metrics.png)
+
+- The Logs terminal will be available on local machine and can be setup to sync with remote storage
+![alt](assets/screenshots/debug.png)
 
 - The Newrelic UI will look like this
 ![alt](assets/screenshots/newrelic.png)

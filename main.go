@@ -104,7 +104,12 @@ func main() {
 			log.Fatalln(err)
 		}
 
-		routes.ApplicationV1Router(router, _database, _logger)
+		routes.ApplicationV1Router(routes.DI{
+			Router: router,
+			DB:     _database,
+			Logger: _logger,
+			Config: _config,
+		})
 
 		httpServer, err = server.NewServer(server.DI{
 			Config:                        _config,
@@ -134,7 +139,12 @@ func main() {
 			_logger.Errorf("error setting up HTTPS basic middlewares: %v", err)
 			log.Fatalln(err)
 		}
-		routes.ApplicationV1Router(router, _database, _logger)
+		routes.ApplicationV1Router(routes.DI{
+			Router: router,
+			DB:     _database,
+			Logger: _logger,
+			Config: _config,
+		})
 
 		httpsServer, err = server.NewServer(server.DI{
 			Config:                        _config,

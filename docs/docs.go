@@ -13,8 +13,8 @@ const docTemplate = `{
         "termsOfService": "http://swagger.io/terms/",
         "contact": {
             "name": "Rajesh Kumar Biswas",
-            "url": "http://github.com/Raj63",
-            "email": "biswas.rajesh63@gmail.com"
+            "url": "https://github.com/purplease-rajesh",
+            "email": "rajesh.biswas@purplease.com"
         },
         "license": {
             "name": "Apache 2.0",
@@ -398,6 +398,98 @@ const docTemplate = `{
                 }
             }
         },
+        "/messages/sms": {
+            "post": {
+                "description": "Create new SMS message on the external system like TWILIO",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "messages"
+                ],
+                "summary": "Create New SMS Message",
+                "parameters": [
+                    {
+                        "description": "body data",
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/message.NewMessageRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "schema": {
+                            "$ref": "#/definitions/message.Response"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/message.MessageResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/message.MessageResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/messages/whatsapp": {
+            "post": {
+                "description": "Create new Whatsapp message on the external system like TWILIO",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "messages"
+                ],
+                "summary": "Create New Whatsapp Message",
+                "parameters": [
+                    {
+                        "description": "body data",
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/message.NewMessageRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "schema": {
+                            "$ref": "#/definitions/message.Response"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/message.MessageResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/message.MessageResponse"
+                        }
+                    }
+                }
+            }
+        },
         "/orders": {
             "post": {
                 "description": "Create new order on the system",
@@ -518,6 +610,98 @@ const docTemplate = `{
                         "description": "Internal Server Error",
                         "schema": {
                             "$ref": "#/definitions/order.MessageResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/otp/create": {
+            "post": {
+                "description": "Create new SMS/whatsapp verify OTP from external system like Twilio",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "verifys"
+                ],
+                "summary": "Create New SMS/whatsapp Verify OTP",
+                "parameters": [
+                    {
+                        "description": "body data",
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/verify.NewCreateOTPRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "schema": {
+                            "$ref": "#/definitions/verify.Response"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/verify.VerifyResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/verify.VerifyResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/otp/validate": {
+            "post": {
+                "description": "Validate a SMS/whatsapp OTP from external system like Twilio",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "verifys"
+                ],
+                "summary": "Validates a SMS/whatsapp OTP",
+                "parameters": [
+                    {
+                        "description": "body data",
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/verify.NewValidateOTPRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "schema": {
+                            "$ref": "#/definitions/verify.Response"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/verify.VerifyResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/verify.VerifyResponse"
                         }
                     }
                 }
@@ -746,6 +930,47 @@ const docTemplate = `{
                 }
             }
         },
+        "message.MessageResponse": {
+            "type": "object",
+            "properties": {
+                "message": {
+                    "type": "string"
+                }
+            }
+        },
+        "message.NewMessageRequest": {
+            "type": "object",
+            "required": [
+                "body",
+                "phone_number"
+            ],
+            "properties": {
+                "body": {
+                    "type": "string",
+                    "example": "Something"
+                },
+                "phone_number": {
+                    "type": "string",
+                    "example": "+919901170563"
+                }
+            }
+        },
+        "message.Response": {
+            "type": "object",
+            "properties": {
+                "body": {
+                    "type": "string",
+                    "example": "Sent Successfully"
+                },
+                "created_at": {
+                    "type": "string"
+                },
+                "status": {
+                    "type": "string",
+                    "example": "ok"
+                }
+            }
+        },
         "order.MessageResponse": {
             "type": "object",
             "properties": {
@@ -775,6 +1000,64 @@ const docTemplate = `{
                     "example": 2
                 }
             }
+        },
+        "verify.NewCreateOTPRequest": {
+            "type": "object",
+            "required": [
+                "channel",
+                "to"
+            ],
+            "properties": {
+                "channel": {
+                    "type": "string",
+                    "example": "sms, whatsapp, call, email"
+                },
+                "to": {
+                    "type": "string",
+                    "example": "+919901170563, rajesh.biswas@purplease.com"
+                }
+            }
+        },
+        "verify.NewValidateOTPRequest": {
+            "type": "object",
+            "required": [
+                "code",
+                "to"
+            ],
+            "properties": {
+                "code": {
+                    "type": "string",
+                    "example": "123456"
+                },
+                "to": {
+                    "type": "string",
+                    "example": "+919901170563, rajesh.biswas@purplease.com"
+                }
+            }
+        },
+        "verify.Response": {
+            "type": "object",
+            "properties": {
+                "body": {
+                    "type": "string",
+                    "example": "Sent Successfully"
+                },
+                "created_at": {
+                    "type": "string"
+                },
+                "status": {
+                    "type": "string",
+                    "example": "ok"
+                }
+            }
+        },
+        "verify.VerifyResponse": {
+            "type": "object",
+            "properties": {
+                "verify": {
+                    "type": "string"
+                }
+            }
         }
     }
 }`
@@ -785,8 +1068,8 @@ var SwaggerInfo = &swag.Spec{
 	Host:             "localhost:8080",
 	BasePath:         "/v1",
 	Schemes:          []string{},
-	Title:            "Golang REST APIs",
-	Description:      "Documentation's Golang REST APIs",
+	Title:            "Golang Integration Sample",
+	Description:      "Documentation's Golang Integration Sample",
 	InfoInstanceName: "swagger",
 	SwaggerTemplate:  docTemplate,
 	LeftDelim:        "{{",

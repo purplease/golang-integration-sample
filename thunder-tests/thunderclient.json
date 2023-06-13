@@ -239,5 +239,119 @@
       }
     ],
     "tests": []
+  },
+  {
+    "_id": "bb97f371-6645-4ce3-9c15-01ebf9dc9676",
+    "colId": "73e6c50d-0973-42bf-8ba0-3031502da98a",
+    "containerId": "",
+    "name": "Send OTP via SMS",
+    "url": "{{host}}/v1/otp/create",
+    "method": "POST",
+    "sortNum": 10000,
+    "created": "2023-06-13T21:56:13.807Z",
+    "modified": "2023-06-13T22:00:27.116Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"to\": \"+919039343396\",\n  \"channel\": \"sms\"\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "001cc7d7-d263-47e1-a706-89c4f42a980b",
+    "colId": "73e6c50d-0973-42bf-8ba0-3031502da98a",
+    "containerId": "",
+    "name": "Send OTP via Whatsapp",
+    "url": "{{host}}/v1/otp/create",
+    "method": "POST",
+    "sortNum": 20000,
+    "created": "2023-06-13T21:57:51.889Z",
+    "modified": "2023-06-13T22:00:36.870Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"to\": \"+919039343396\",\n  \"channel\": \"whatsapp\"\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "fa37aecd-9da6-43bb-ac19-03b66100cf3d",
+    "colId": "73e6c50d-0973-42bf-8ba0-3031502da98a",
+    "containerId": "",
+    "name": "Validate OTP via Whatsapp",
+    "url": "{{host}}/v1/otp/validate",
+    "method": "POST",
+    "sortNum": 30000,
+    "created": "2023-06-13T21:58:32.742Z",
+    "modified": "2023-06-13T21:59:21.839Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"to\": \"+919901170563\",\n  \"code\": \"139299\"\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "7d5394fc-2de8-427a-9461-df43296653ce",
+    "colId": "73e6c50d-0973-42bf-8ba0-3031502da98a",
+    "containerId": "",
+    "name": "Send OTP via Email",
+    "url": "{{host}}/v1/otp/create",
+    "method": "POST",
+    "sortNum": 25000,
+    "created": "2023-06-13T22:02:43.304Z",
+    "modified": "2023-06-13T22:03:11.399Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"to\": \"rajesh.biswas@purplease.com\",\n  \"channel\": \"email\"\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "5febfe7d-795b-4d7a-ada2-b3ddf05b3996",
+    "colId": "8c8ebc2b-facb-4462-9b7f-4a18952b9d85",
+    "containerId": "",
+    "name": "Send SMS to PhoneNumber",
+    "url": "{{host}}/v1/messages/sms",
+    "method": "POST",
+    "sortNum": 10000,
+    "created": "2023-06-13T22:13:11.559Z",
+    "modified": "2023-06-13T22:56:03.832Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"phone_number\": \"+919039343396\",\n  \"body\": \"Hello, Thanks for subscribing PURPLEASE Software Solutions.\"\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "9d2d999f-a579-4b78-b837-80ea2fbb967f",
+    "colId": "8c8ebc2b-facb-4462-9b7f-4a18952b9d85",
+    "containerId": "",
+    "name": "Send Whatsapp message to PhoneNumber",
+    "url": "{{host}}/v1/messages/whatsapp",
+    "method": "POST",
+    "sortNum": 20000,
+    "created": "2023-06-13T22:24:27.011Z",
+    "modified": "2023-06-13T22:43:18.993Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"phone_number\": \"+919039343396\",\n  \"body\": \"Hello, Thanks for subscribing PURPLEASE Software Solutions.\"\n}",
+      "form": []
+    },
+    "tests": []
   }
 ]
